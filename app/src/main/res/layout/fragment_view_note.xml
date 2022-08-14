@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.notes.models.NoteModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.viewnote.ViewNoteFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_dark">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/ic_back"
+                android:tint="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/note"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/rowFG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="5dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text='@{item.noteType.name!=null? item.noteType.name:""}'
+                        tools:ignore="RelativeOverlap" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        tools:ignore="RelativeOverlap" />
+
+                </RelativeLayout>
+
+                <com.example.notes.customview.CustomImageView
+                    android:id="@+id/imgNote"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto"
+                    android:hint="@string/title"
+                    android:text='@{item.title!=null? item.title:""}'
+                    android:textSize="15dp"
+                    app:fontFamily="@font/roboto_medium"
+                    tools:ignore="SpUsage" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description"
+                    android:paddingTop="10dp"
+                    android:text='@{item.description!=null? item.description:""}' />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
